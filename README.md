@@ -1,6 +1,6 @@
 # TakeOffCrawler
 
-Parse a text to retrieve URLs and parse them to obtain a summary. 
+TakeOffCrawler parses a text and identifies URLs, which are crawled to obtain meta-content like title and description and relevant photos. 
 
 
 ## Installation
@@ -8,7 +8,7 @@ Parse a text to retrieve URLs and parse them to obtain a summary.
 Add to your Gemfile and run the `bundle` command to install it.
 
  ```ruby
- gem "take_off_crawler"
+ gem "take_off_crawler", git: "git@github.com:TakeOffLabs/TakeOffCrawler.git"
  ```
 
 **Requires Ruby 1.9.2 or later.**
