@@ -17,7 +17,7 @@ module TakeOffCrawler
       end
 
       def copy_migrations
-        migration_template "create_link.rb", "db/migrate/create_link.rb"
+        migration_template "create_links.rb", "db/migrate/create_links.rb"
       end
     end
   end
