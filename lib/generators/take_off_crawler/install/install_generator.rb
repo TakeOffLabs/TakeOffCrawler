@@ -4,7 +4,6 @@ module TakeOffCrawler
   module Generators
     class InstallGenerator < ::Rails::Generators::Base
       include Rails::Generators::Migration
-      include Rails::Generators::Model
       
       source_root File.expand_path('../templates', __FILE__)
       desc "add the migration and model for Link"
@@ -22,9 +21,6 @@ module TakeOffCrawler
         migration_template "create_links.rb", "db/migrate/create_links.rb"
       end
       
-      def copy_model
-        template "link.rb", "app/models/link.rb"
-      end
     end
   end
 end
