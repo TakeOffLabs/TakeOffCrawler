@@ -15,4 +15,12 @@ Add to your Gemfile and run the `bundle` command to install it.
 
 
 ## Usage
-TODO
+
+To use the gem, run the following command:
+
+  ```ruby
+  rails g take_off_crawler:install
+  rake db:migrate
+  ```
+
+  
