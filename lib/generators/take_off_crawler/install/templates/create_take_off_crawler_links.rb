@@ -1,6 +1,6 @@
-class CreateLinks < ActiveRecord::Migration
+class CreateTakeOffCrawlerLinks < ActiveRecord::Migration
   def change
-    create_table :links do |t|
+    create_table :take_off_crawler_links do |t|
       t.text :images
       t.string :link
       t.text :meta_content
