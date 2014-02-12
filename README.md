@@ -26,5 +26,11 @@ To use the gem, run the following command:
   rails g take_off_crawler:install
   rake db:migrate
   ```
+This will generate a model called TakeOffCrawler::Links in which we will save all crawled links.
+Then pass the content of a text field to the controller and get your link objects like this:
 
+  ```ruby
+  @link = TakeOffCrawler.preview content
+  ```
   
+You can choose to display the content in whatever form you want.
