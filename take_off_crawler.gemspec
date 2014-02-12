@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "take_off_crawler"
   s.version     = TakeOffCrawler::VERSION
   s.authors     = ["Flavia Grosan"]
-  s.email       = ["me@flaviagrosan.com"]
+  s.email       = ["flavia@takeofflabs.com"]
   s.homepage    = ""
   s.summary     = %q{Parses a text to identify and crawl URLs like image links, youtube.com, nytimes.com and many others}
   s.description = %q{This gem can be used for parsing posts and user provided information.}

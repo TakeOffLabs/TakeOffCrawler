@@ -2,6 +2,10 @@
 
 TakeOffCrawler parses a text and identifies URLs, which are crawled to obtain meta-content like title and description and relevant photos. 
 
+## Demo
+![Sample 1](http://f.cl.ly/items/3Y2A1A3r39330o1m1713/Screen%20Shot%202014-02-12%20at%2012.14.33%20PM.png)
+![Sample 2](http://f.cl.ly/items/1F2o08033b3m3v432l2L/Screen%20Shot%202014-02-12%20at%2012.15.58%20PM.png)
+![Sample 3](http://f.cl.ly/items/112U0x1N3S3F001D0H35/Screen%20Shot%202014-02-12%20at%2012.16.06%20PM.png)
 
 ## Installation
 

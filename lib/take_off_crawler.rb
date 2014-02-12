@@ -1,9 +1,9 @@
 module TakeOffCrawler
   require 'take_off_crawler/engine' if defined?(Rails)
 
-  def self.preview content
+  def self.preview(content)
     require 'open-uri'
-    
+
     regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\s\%\/_\.\-]*(\?\S+)?)?)?)'
     link = content.match(regex)
     new_link = nil
