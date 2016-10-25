@@ -11,7 +11,7 @@ module TakeOffCrawler
     if link.present?
       url = link[0]
       url = "http://" + url unless url.match(/^http:/)
-      existing_link = Link.find_all_by_link(url).last
+      existing_link = Link.where(link: url).last
       if existing_link.present? && existing_link.updated_at > 2.days.ago
          return existing_link
       else
