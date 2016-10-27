@@ -1,6 +1,7 @@
 module TakeOffCrawler
   require 'take_off_crawler/engine' if defined?(Rails)
-
+  YOUTUBE_KEY = "AIzaSyDHIO4_c2Mi28YEaaj1c3CMGyv53KAcUPo"
+  
   def self.preview(content)
     require 'open-uri'
 
@@ -35,7 +36,7 @@ module TakeOffCrawler
         youtube = content.match(regex)
         if youtube.present? && youtube.length > 3
           new_link.youtube_id = youtube[3]
-          url = "http://gdata.youtube.com/feeds/api/videos/" + youtube[3] 
+          url = "https://www.googleapis.com/youtube/v3/videos?id=" + youtube[3] + "&key=" + YOUTUBE_KEY + "&part=snippet"
           begin
             new_link = fetch_data_youtube(new_link, url)
           rescue
@@ -46,7 +47,7 @@ module TakeOffCrawler
           rescue
           end
         end
-        if new_link.persisted?
+        if new_link.present? && new_link.persisted?
           return new_link
         end
       end
@@ -58,22 +59,27 @@ module TakeOffCrawler
   def self.fetch_data_youtube(new_link, url)    
     images = []
     doc = Nokogiri::HTML(open(url))
-
+    parsed = JSON.parse(doc)["items"][0]["snippet"] rescue nil
+    return nil if parsed.blank?
     #title
-    titles = doc.search('title')
-    if !titles.empty?
-      new_link.title = titles.first.content
+    title = parsed["title"]
+    if title.present?
+      new_link.title = title
     end
 
     ## search for meta content
-    descriptions = doc.search('description')
-    if !descriptions.empty?
-      new_link.meta_content = descriptions.first.content
+    description = parsed["description"]
+    if description.present?
+      new_link.meta_content = description
     end
 
     #search for images
-    new_link.images = doc.search('thumbnail').map{|p| p.attribute('url').content}
-
+    thumbnails = parsed["thumbnails"]
+    if thumbnails.present?
+      images = thumbnails.map{|key, val| val["url"]}
+      new_link.images = images
+    end
+    
     if new_link.save
       return new_link
     end
